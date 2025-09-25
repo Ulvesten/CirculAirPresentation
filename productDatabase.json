@@ -1,0 +1,283 @@
+{
+	"suppliers": {
+		"price-industries": {
+			"name": "Price Industries",
+			"logo": "https://www.priceindustries.com/content/themes/price/images/logo.svg",
+			"backgroundImage": "https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683087c7dc1ab51d2a8a561a.webp",
+			"categories": {
+				"underfloor": {
+					"title": "Underfloor Ventilation",
+					"products": [
+						{
+							"id": "mfd-dp",
+							"title": "MFD-DP - Modular Floor Diffuser",
+							"subtitle": "Displacement Pattern",
+							"url": "https://www.priceindustries.com/underfloor/products/mfd-dp-modular-floor-diffuser-displacement-pattern",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/rfddarfhd-round-floor-displacement-diffuser.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/rfddarfhd-round-floor-displacement-diffuser-5.jpg"
+							],
+							"features": [
+								"Ideal för låg induktionsgolvnivå",
+								"Horisontellt luftflödesmönster",
+								"Låg turbulens för komfort",
+								"Enkel drop-in installation",
+								"CE-certifierad"
+							],
+							"description": "Perfekt för applikationer där låg induktion och horisontellt luftflöde krävs. Designad för att minimera drag och maximera komfort."
+						},
+						{
+							"id": "mfd-tp",
+							"title": "MFD-TP - Modular Floor Diffuser",
+							"subtitle": "Twist Pattern",
+							"url": "https://www.priceindustries.com/underfloor/products/mfd-tp-modular-floor-diffuser-twist-pattern",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/rftdarftd-round-floor-turbulent-flow-diffusers.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/rftdarftd-round-floor-turbulent-flow-diffusers-5.jpg"
+							],
+							"features": [
+								"Turbulent flödesdesign för optimal blandning",
+								"Twist-mönster för förbättrad luftdistribution",
+								"Idealisk för höga luftflöden",
+								"Robust konstruktion för kommersiell användning",
+								"Enkel installation och underhåll"
+							],
+							"description": "MFD-TP använder ett unikt twist-mönster för att skapa turbulent flöde som optimerar luftblandning och komfort i stora utrymmen."
+						},
+						{
+							"id": "linear-natural-convection",
+							"title": "Linear Natural Convection Terminal",
+							"url": "https://www.priceindustries.com/underfloor/products/linear-natural-convection-terminal",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/linear-natural-convection-terminal-6.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/lfg-linear-floor-grille.jpg"
+							],
+							"features": [
+								"Naturlig konvektion utan fläktar",
+								"Energieffektiv drift",
+								"Linjär design för diskret installation",
+								"Låg ljudnivå",
+								"Miljövänlig lösning"
+							],
+							"description": "En innovativ terminal som använder naturlig konvektion för energieffektiv luftcirkulation utan behov av mekaniska fläktar."
+						},
+						{
+							"id": "variable-volume-round-basket",
+							"title": "Variable Volume Round Floor Basket",
+							"url": "https://www.priceindustries.com/underfloor/products/variable-volume-round-floor-basket",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/dbv-variable-volume-round-floor-basket-3.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/dbv-variable-volume-round-floor-basket-2.jpg"
+							],
+							"features": [
+								"Variabel volymkontroll",
+								"Rund design för flexibel placering",
+								"Justerbar luftflödeskapacitet",
+								"Robust konstruktion",
+								"Lämplig för olika applikationer"
+							],
+							"description": "DBV erbjuder variabel volymkontroll med sin runda design, perfekt för applikationer som kräver flexibel luftflödesreglering."
+						},
+						{
+							"id": "rpn-pressure-node",
+							"title": "RPN - Relative Pressure Node",
+							"url": "https://www.priceindustries.com/underfloor/products/rpn-relative-pressure-node",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/relative-pressure-node-2.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/relative-pressure-node-3.jpg"
+							],
+							"features": [
+								"Precis tryckmätning och kontroll",
+								"Kompakt design för enkel integration",
+								"Hög noggrannhet och tillförlitlighet",
+								"Lämplig för systembalansering",
+								"Professionell kvalitet"
+							],
+							"description": "RPN ger precis tryckmätning och kontroll för optimal systembalansering och prestanda i underfloor ventilationssystem."
+						}
+					]
+				},
+				"diffusers": {
+					"title": "Diffusers",
+					"products": [
+						{
+							"id": "spd",
+							"title": "Square Plaque Diffuser",
+							"url": "https://www.priceindustries.com/diffusers/products/spd-square-plaque-diffuser",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/spd--spd-as--aspd-square-plaque-diffusers-2.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/square-plaque-diffuser.jpg"
+							],
+							"features": [
+								"Elegant fyrkantig design",
+								"Jämn luftdistribution",
+								"Flera monteringsalternativ",
+								"Lämplig för olika takhöjder",
+								"Låg ljudnivå"
+							],
+							"description": "SPD är en elegant fyrkantig diffusor som ger jämn luftdistribution med minimal turbulens och låg ljudnivå."
+						},
+						{
+							"id": "scd",
+							"title": "Square Cone Diffuser",
+							"url": "https://www.priceindustries.com/diffusers/products/scd-square-cone-diffuser",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/scd--scd-as--ascd--square-cone-diffusers.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/square-cone-diffuser.jpg"
+							],
+							"features": [
+								"Justerbar luftflödesriktning",
+								"Fyrkantig design med konformad mitt",
+								"Hög induktionsförmåga",
+								"Passar i standardtak",
+								"Robust konstruktion"
+							],
+							"description": "SCD erbjuder justerbar luftflödesriktning med sin unika konformade design, perfekt för applikationer som kräver flexibel luftdistribution."
+						},
+						{
+							"id": "smd",
+							"title": "Modular Louvered Diffuser",
+							"url": "https://www.priceindustries.com/diffusers/products/smd-modular-louvered-diffuser",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/modular-louvered-face-diffuser.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/modular-louvered-face-diffuser-4.jpg"
+							],
+							"features": [
+								"Modulär design för flexibilitet",
+								"Justerbara lameller",
+								"Hög kapacitet",
+								"Enkel installation",
+								"Lämplig för kommersiella miljöer"
+							],
+							"description": "SMD kombinerar flexibilitet och prestanda med sin modulära design och justerbara lameller för optimal luftdistribution."
+						},
+						{
+							"id": "cf",
+							"title": "Custom Flow Architectural Slot Diffuser",
+							"url": "https://www.priceindustries.com/diffusers/products/cf-custom-flow-architectural-slot-diffuser",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/custom-flow-architectural-slot-diffuser-22.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/custom-flow-architectural-slot-diffuser-23.jpg"
+							],
+							"features": [
+								"Elegant arkitektonisk design",
+								"Anpassningsbar luftflödesriktning",
+								"Slimmad profil",
+								"Idealisk för designfokuserade projekt",
+								"Hög prestanda"
+							],
+							"description": "CF erbjuder en elegant arkitektonisk lösning med sin slimmade slitsdesign, perfekt för projekt där estetik är lika viktigt som funktion."
+						},
+						{
+							"id": "rcd",
+							"title": "Round Cone Diffuser",
+							"url": "https://www.priceindustries.com/diffusers/products/rcd-round-cone-diffuser",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/rcd--arcd--rcda-round-cone-diffusers.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/rpd-round-plaque-diffusers.jpg"
+							],
+							"features": [
+								"Rund design med konformad mitt",
+								"360° luftdistribution",
+								"Justerbar kastlängd",
+								"Lämplig för olika takhöjder",
+								"Estetiskt tilltalande"
+							],
+							"description": "RCD ger en jämn 360° luftdistribution med sin runda design, idealisk för öppna utrymmen där jämn luftfördelning är viktigt."
+						},
+						{
+							"id": "amcd",
+							"title": "Adjustable Modular Core Directional",
+							"url": "https://www.priceindustries.com/diffusers/products/amcd-adjustable-modular-core-directional",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/modular-core-adjustable---directional-diffuser.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/modular-core-adjustable---directional-diffuser-2.jpg"
+							],
+							"features": [
+								"Fullt justerbar luftriktning",
+								"Modulär kärndesign",
+								"Hög flexibilitet",
+								"Enkel att anpassa på plats",
+								"Robust konstruktion"
+							],
+							"description": "AMCD erbjuder maximal flexibilitet med sin justerbara modulära kärna, vilket gör den idealisk för miljöer där luftflödesriktningen behöver anpassas."
+						},
+						{
+							"id": "radial-twist",
+							"title": "Radial Twist Diffusers",
+							"url": "https://www.priceindustries.com/diffusers/products/radial-twist-diffusers",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/rtd-radial-twist-diffusers.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/rvd-radial-vane-diffusers.jpg"
+							],
+							"features": [
+								"Unik vriddesign för optimal luftblandning",
+								"Hög induktionsförmåga",
+								"Lämplig för kylapplikationer",
+								"Modern estetik",
+								"Effektiv luftdistribution"
+							],
+							"description": "Radial Twist diffusorer använder en innovativ vriddesign för att optimera luftblandning och induktion, vilket ger överlägsen komfort och effektivitet."
+						}
+					]
+				},
+				"chilledBeams": {
+					"title": "Chilled Beams",
+					"products": [
+						{
+							"id": "acbr-recessed",
+							"title": "ACBR – Aktiv Kylbalk, Infälld",
+							"subtitle": "Flexibel för horisontell eller vertikal installation",
+							"url": "https://www.priceindustries.com/beams/products/active-chilled-beam-recessed",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-recessed.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-recessed-3.jpg"
+							],
+							"features": [
+								"Lågprofildesign för utrymmen med låg takhöjd",
+								"Flexibel installation: horisontell eller vertikal",
+								"Flera galleralternativ för tilluft och frånluft",
+								"Fältvändbara batterikonfigurationer"
+							],
+							"description": "Den infällda aktiva kylbalken ACBR erbjuder flexibel installation för både horisontella och vertikala applikationer. Med sin smala profil är den idealisk för utrymmen med låg takhöjd eller där diskret installation önskas. Perfekt för kontor, hotellrum och renoveringsprojekt där energieffektivitet och komfort är prioriterade."
+						},
+						{
+							"id": "acbc-floor",
+							"title": "ACBC – Aktiv Kylbalk, Golvmonterad",
+							"subtitle": "Exponerad enhet för hög komfort",
+							"url": "https://www.priceindustries.com/beams/products/acbc-floor-mounted-active-beam",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/floor-mounted-active-beam.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-cabinet--2.jpg"
+							],
+							"features": [
+								"2- eller 4-rörs batterikonfiguration",
+								"Tyst drift med låg ljudnivå",
+								"Robust konstruktion med kraftig frontpanel",
+								"Möjlighet till seriekoppling för enhetlig design"
+							],
+							"description": "Den golvmonterade aktiva kylbalken ACBC är designad för att leverera hög komfort i utrymmen med höga krav på estetik och funktion. Genom att inducera rumsluft genom en värmeväxlare och blanda den med primärluft, säkerställs jämn temperaturfördelning. Idealisk för kontor, skolor, hotell och lobbyområden."
+						},
+						{
+							"id": "riu-retrofit",
+							"title": "RIU – Retrofit Induktionsenhet",
+							"subtitle": "Modernisering av befintliga system",
+							"url": "https://www.priceindustries.com/beams/products/retrofit-induction-unit",
+							"images": [
+								"https://www.priceindustries.com/content/uploads/images/product/retrofit-induction-unit.jpg",
+								"https://www.priceindustries.com/content/uploads/images/product/retrofit-induction-unit-6.jpg"
+							],
+							"features": [
+								"Anpassad för uppgradering av äldre induktionssystem",
+								"Förbättrad energieffektivitet och komfort",
+								"Bevarar infrastruktur för kostnadseffektivitet",
+								"Kompatibel med moderna styrsystem"
+							],
+							"description": "RIU är en retrofit-lösning som möjliggör uppgradering av äldre induktionsenheter till moderna, energieffektiva system utan att behöva byta ut hela infrastrukturen. Genom att integrera ny teknik i befintliga installationer, förbättras både prestanda och komfort, samtidigt som kostnader och miljöpåverkan minimeras."
+						}
+					]
+				}
+			}
+		}
+	}
+}

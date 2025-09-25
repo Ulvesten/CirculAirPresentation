@@ -1,0 +1,2393 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<title>Minimal Presentation</title>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+			rel="stylesheet"
+		/>
+		<!-- Lightbox CSS -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+		/>
+		<style>
+			/* ===== CSS VARIABLES ===== */
+			:root {
+				--text-color: #fff;
+				--text-dark: #333;
+				--overlay-dark: rgba(0, 0, 0, 0.5);
+				--overlay-darker: rgba(0, 0, 0, 0.6);
+				--card-bg: rgba(255, 255, 255, 0.98);
+				--card-shadow: rgba(0, 0, 0, 0.1);
+				--blur-radius: 6px;
+				--transition-smooth: all 0.3s ease;
+				--border-radius: 12px;
+				--border-radius-large: 16px;
+				--spacing-small: 8px;
+				--spacing-medium: 16px;
+				--spacing-large: 24px;
+				--spacing-xl: 40px;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				transition: all 0.3s ease;
+			}
+
+			body {
+				font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+				background: #fafafa;
+				overflow: hidden;
+			}
+
+			.swiper-container {
+				width: 100%;
+				height: 100vh;
+				overflow: hidden;
+			}
+			.vertical-swiper {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.partner-swiper {
+				width: 100%;
+				height: 100vh;
+				overflow: hidden;
+			}
+			.partner-swiper .swiper-slide {
+				position: relative;
+				max-width: 300px;
+				max-height: 150px;
+				width: 100%;
+				border-radius: 8px;
+				overflow: hidden;
+				cursor: pointer;
+				box-shadow: 0 2px 16px 3px rgba(0, 0, 0, 1);
+				padding: unset;
+			}
+			.partner-swiper .swiper-slide img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				filter: blur(0px);
+				transition: all 0.3s ease-out;
+				border-radius: 8px;
+				image-rendering: auto;
+			}
+
+			.vertical-swiper .swiper-slide {
+				height: 100vh;
+				min-height: 100vh;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			.vertical-swiper .swiper-wrapper {
+				height: 100vh;
+			}
+			.slide-content {
+				text-align: center;
+				max-width: 800px;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.slide-title {
+				font-size: 2.5rem;
+				color: #323232;
+				font-weight: 700;
+				margin-bottom: 2rem;
+				line-height: 1.2;
+			}
+
+			.slide-text {
+				font-size: 1.125rem;
+				color: #323232;
+				font-weight: 400;
+				line-height: 1.6;
+				background: rgba(0, 0, 0, 0.2);
+				padding: 1.5rem 2rem;
+				border-radius: 16px;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.swiper-slide {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 4rem;
+				position: relative;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.product-slide {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 0px;
+				position: relative;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.swiper-slide-product {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				max-height: 100vh;
+			}
+
+			.swiper-slide::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+
+				z-index: 1;
+			}
+
+			/* White gradient overlay variant */
+
+			.swiper-slide.white-overlay::before {
+				background: linear-gradient(
+					to right,
+					rgba(255, 255, 255, 1) 0%,
+					rgba(255, 255, 255, 0.7) 40%,
+					rgba(255, 255, 255, 0) 100%
+				);
+				backdrop-filter: blur(1px);
+			}
+
+			.swiper-slide.white-overlay-right::before {
+				background: linear-gradient(
+					to left,
+					rgba(255, 255, 255, 1) 0%,
+					rgba(255, 255, 255, 0.7) 40%,
+					rgba(255, 255, 255, 0) 100%
+				);
+				backdrop-filter: blur(1px);
+			}
+
+			/* Black gradient overlay variant */
+			.swiper-slide.black-overlay::before {
+				background: linear-gradient(
+					to right,
+					rgba(0, 0, 0, 1) 0%,
+					rgba(0, 0, 0, 0.7) 40%,
+					rgba(0, 0, 0, 0) 100%
+				);
+				backdrop-filter: blur(2px);
+			}
+
+			/* White washed variant */
+			.swiper-slide.white-washed::before {
+				background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%);
+			}
+
+			.swiper-slide > * {
+				position: relative;
+				z-index: 2;
+			}
+
+			/* Logo Slide Specific Styles */
+			.logo-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683c1be59b0aa24a5f06c8a8.jpeg");
+			}
+
+			.logo-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 3rem;
+				max-width: 100%;
+				text-align: left;
+				position: absolute;
+				left: 10%;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			.logo {
+				transition: transform 0.3s ease;
+			}
+
+			.logo:hover {
+				transform: translateY(-8px);
+			}
+
+			.logo img {
+				width: auto;
+				height: auto;
+				filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.3));
+				transition: filter 0.3s ease;
+			}
+
+			.logo:hover img {
+				filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.4));
+			}
+
+			.company-tagline {
+				font-size: 1.5rem;
+				color: #323232;
+				font-weight: 500;
+				line-height: 1.6;
+				margin-top: 1rem;
+				max-width: 40vw;
+				text-align: center;
+				background: none;
+			}
+
+			/* Founder slide specific styling */
+			.therese-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684172c83eb5195b7c366d68.jpeg");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.founder-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6842f3fe6200704398f49496.jpeg");
+			}
+
+			.example-slide .founder-content {
+				position: absolute;
+				left: 10%;
+				top: 35%;
+				transform: translateY(-50%);
+				display: flex;
+				justify-content: space-around;
+				min-width: 80vw;
+				list-style-position: inside;
+			}
+
+			.therese-slide .founder-content {
+				position: absolute;
+				left: 10%;
+				top: 50%;
+				transform: translateY(-50%);
+				max-width: 500px;
+			}
+
+			.founder-content {
+				position: absolute;
+				left: 10%;
+				top: 25%;
+				transform: translateY(-50%);
+				max-width: 500px;
+			}
+
+			.founder-title {
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: #323232;
+				margin-bottom: 1rem;
+				text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+			}
+
+			.founder-subtitle {
+				font-size: 1.25rem;
+				font-weight: 500;
+				color: #323232;
+				margin-bottom: 2rem;
+				text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+			}
+
+			.founder-text {
+				font-size: 1rem;
+				color: black;
+				line-height: 1.6;
+			}
+
+			.founder-image-card {
+				position: absolute;
+				right: 10%;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(255, 255, 255, 0.9);
+				padding: 1rem;
+				border-radius: 1rem;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+				max-width: 40vw;
+				max-height: 60vh;
+				contain: content;
+			}
+
+			.founder-image-card img {
+				width: auto;
+				height: 100%;
+				border-radius: 0.75rem;
+				object-fit: cover;
+				max-height: 50vh;
+				margin-bottom: -5px;
+			}
+
+			.founder-gallery {
+				display: flex;
+				position: absolute;
+				bottom: 10%;
+				gap: 3rem;
+				justify-content: space-evenly;
+				margin-top: 4rem;
+				width: 90vw;
+			}
+
+			.founder-gallery img {
+				width: 300px;
+				height: 150px;
+				object-fit: cover;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: all 0.4s ease;
+
+				cursor: zoom-in;
+			}
+
+			/* ReUse slide specific styling */
+			.reuse-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68417578e142b6bfbb411840.webp");
+				position: relative;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 4rem;
+				height: 100%;
+			}
+
+			.fasadapparat-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847011ca2686d4259a7cfe8.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.reuse-slide .slide-title {
+				font-size: 3rem;
+				font-weight: 700;
+				color: #323232;
+
+				margin-top: 2rem;
+				max-width: 900px;
+			}
+
+			.reuse-slide .slide-tagline {
+				font-size: 1.5rem;
+				font-weight: 500;
+				color: #323232;
+
+				text-align: center;
+				width: 100%;
+			}
+
+			.challenge-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6841a31e304b172b0c4bceb1.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.wierd-places-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684412dd830446564ef7be8d.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.solution-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683ec853eca2402fb8ed783e.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.technodromen-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68441673374ef22947ed81d7.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.technodromen-slide .solution-content {
+				position: absolute;
+				left: 10%;
+				top: 15%;
+				transform: translateY(-50%);
+				max-width: 600px;
+			}
+
+			.showcase-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68440fc1374ef28028ed7b74.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.example-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68441c3c830446a0a5f7c3e6.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.what-we-do-slide {
+				background-image: url("https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683495cfaf0e813c2a28e2d1.jpeg");
+
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.showcase-slide .solution-content {
+				position: absolute;
+				left: 10%;
+				top: 15%;
+				transform: translateY(-50%);
+				max-width: 600px;
+			}
+
+			.challenge-slide,
+			.solution-slide {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 4rem;
+				color: #323232;
+			}
+
+			.challenge-content {
+				max-width: 800px;
+				text-align: left;
+				position: absolute;
+				left: 10%;
+				top: 25%;
+				transform: translateY(-50%);
+			}
+			.challenge-content p {
+				font-size: 1.2rem;
+				font-weight: 500;
+				margin-top: 1rem;
+			}
+
+			.solution-content {
+				max-width: 600px;
+				text-align: left;
+				position: absolute;
+				right: 10%;
+				top: 25%;
+				transform: translateY(-50%);
+			}
+
+			.challenge-title,
+			.solution-title {
+				font-size: 2.75rem;
+				font-weight: 700;
+				margin-bottom: 2rem;
+				color: #323232;
+			}
+
+			.challenge-list,
+			.solution-list {
+				font-size: 1.2rem;
+				line-height: 1.8;
+				list-style: disc;
+				padding-left: 1.5rem;
+			}
+
+			.challenge-gallery,
+			.solution-gallery {
+				display: flex;
+				position: absolute;
+				bottom: 10%;
+				gap: 1rem;
+				justify-content: space-evenly;
+				margin-top: 4rem;
+				width: 80vw;
+			}
+
+			.challenge-gallery img,
+			.solution-gallery img {
+				width: 300px;
+				height: 150px;
+				object-fit: cover;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: all 0.4s ease;
+				box-shadow: 0 2px 16px 3px rgba(0, 0, 0, 1);
+				cursor: zoom-in;
+			}
+
+			.white-overlay .company-tagline {
+				color: #1f2937;
+				text-shadow: none;
+			}
+
+			.slide-content {
+				text-align: center;
+				max-width: 800px;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.slide-title {
+				font-size: 2.5rem;
+				color: white;
+				font-weight: 700;
+				margin-bottom: 2rem;
+				line-height: 1.2;
+			}
+
+			.slide-text {
+				font-size: 1.125rem;
+				color: white;
+				font-weight: 400;
+				line-height: 1.6;
+				background: rgba(0, 0, 0, 0.2);
+				padding: 1.5rem 2rem;
+				border-radius: 16px;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+			/* ===== PRODUCT SECTION STYLES ===== */
+			.product-section-card {
+				background: var(--card-bg);
+				border-radius: 1.5rem;
+				box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+				max-width: 90%;
+				width: 100%;
+				margin: auto;
+				display: flex;
+				flex-direction: column;
+				padding: 20px var(--spacing-xl) var(--spacing-xl) var(--spacing-xl);
+			}
+
+			.product-slide-top-image {
+				position: relative;
+				height: 25%;
+				width: 100%;
+				overflow: hidden;
+			}
+
+			.product-slide-top-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 80%;
+			}
+
+			.product-slide-title {
+				position: absolute;
+				bottom: 0px;
+				left: 15px;
+				color: white;
+				font-size: 3rem;
+				font-weight: bold;
+				text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+				z-index: 1;
+			}
+
+			.section-title {
+				font-size: 2rem;
+				font-weight: 700;
+				color: #000;
+				margin-left: 20px;
+				margin-top: 10px;
+			}
+
+			/* ===== CATEGORY FILTER STYLES ===== */
+			.category-filter {
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin: 20px auto;
+				max-width: 90%;
+				padding: 10px;
+				background: rgba(255, 255, 255, 0.9);
+				border-radius: var(--border-radius);
+				box-shadow: 0 4px 15px var(--card-shadow);
+			}
+
+			.category-btn {
+				padding: var(--spacing-small) var(--spacing-medium);
+				border: none;
+				border-radius: var(--spacing-small);
+				background: #f0f0f0;
+				color: var(--text-dark);
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition-smooth);
+				font-family: "Poppins", sans-serif;
+				font-size: 14px;
+			}
+
+			.category-btn:hover {
+				background: #e0e0e0;
+				transform: translateY(-2px);
+			}
+
+			.category-btn.active {
+				background: #007bff;
+				color: white;
+				box-shadow: 0 2px 8px rgba(0, 123, 255, 0.4);
+			}
+
+			/* ===== PRODUCT SWIPER STYLES ===== */
+			.product-category-swiper,
+			.horizontal-product-swiper {
+				width: 100%;
+			}
+
+			.horizontal-product-swiper {
+				overflow: hidden;
+				height: auto;
+			}
+
+			.horizontal-product-swiper .swiper-slide {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				height: auto !important;
+				min-height: auto !important;
+				overflow: visible;
+				padding: var(--spacing-xl);
+			}
+
+			/* Responsive padding for horizontal product swiper slides */
+			@media (max-width: 1400px) {
+				.horizontal-product-swiper .swiper-slide {
+					padding-inline: var(--spacing-small);
+				}
+				.product-card .description {
+					display: none; /* Hide description on smaller screens */
+				}
+			}
+
+			@media (max-width: 768px) {
+				.horizontal-product-swiper .swiper-slide {
+					padding: var(--spacing-medium);
+				}
+				.product-card .description {
+					display: none; /* Hide description on smaller screens */
+				}
+			}
+
+			@media (max-width: 480px) {
+				.horizontal-product-swiper .swiper-slide {
+					padding: var(--spacing-small);
+				}
+				.product-card .description {
+					display: none; /* Hide description on smaller screens */
+				}
+			}
+
+			.horizontal-product-swiper .swiper-wrapper {
+				height: auto !important;
+				min-height: auto !important;
+				display: flex;
+				flex-direction: row;
+			}
+
+			/* ===== PRODUCT CARD STYLES ===== */
+			.product-card {
+				margin: auto;
+				background: var(--card-bg);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+				border-radius: var(--border-radius-large);
+				overflow: hidden;
+				font-family: "Poppins", sans-serif;
+				position: relative;
+				color: var(--text-dark);
+				height: auto;
+				width: 100%;
+				transition: var(--transition-smooth);
+				border: 1px solid rgba(0, 0, 0, 0.08);
+				max-height: 50vh;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+
+			.product-card:hover {
+				transform: translateY(-8px) scale(1.02);
+				box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+			}
+
+			.product-image {
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+				background: #f8f9fa;
+			}
+
+			.product-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.3s ease;
+			}
+
+			.product-card:hover .product-image img {
+				transform: scale(1.05);
+			}
+
+			.product-title {
+				font-size: 1.1rem;
+				font-weight: 600;
+				text-align: center;
+				color: #222;
+				padding: var(--spacing-medium) var(--spacing-medium)
+					var(--spacing-small) var(--spacing-medium);
+				line-height: 1.3;
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.product-card .description {
+				padding: 0 var(--spacing-medium) var(--spacing-medium)
+					var(--spacing-medium);
+				font-size: 0.8rem;
+				color: #555;
+				line-height: 1.5;
+				text-align: center;
+			}
+
+			.product-icons {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				padding: var(--spacing-medium);
+				border-top: 1px solid rgba(0, 0, 0, 0.08);
+				background: rgba(248, 249, 250, 0.8);
+			}
+
+			.icon-link {
+				text-decoration: none;
+				font-size: 1.3rem;
+				color: #666;
+				transition: all 0.2s ease;
+				padding: var(--spacing-small);
+				border-radius: var(--spacing-small);
+				background: rgba(255, 255, 255, 0.8);
+				box-shadow: 0 2px 8px var(--card-shadow);
+			}
+
+			.icon-link:hover {
+				color: #007bff;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+				background: white;
+			}
+
+			/* ===== SPECIAL PRODUCT CARD LAYOUT ===== */
+			.image-wrapper {
+				position: relative;
+				height: auto;
+				padding: 20px;
+				background: #f8f9fa;
+				border-radius: var(--border-radius);
+				margin: var(--spacing-medium) var(--spacing-medium) 0px
+					var(--spacing-medium);
+				margin-bottom: 0px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				gap: 10px;
+			}
+
+			.image-wrapper img {
+				width: calc(50% - 5px);
+				height: auto;
+				object-fit: contain;
+				border-radius: var(--spacing-small);
+				transition: transform 0.3s ease;
+				cursor: pointer;
+				box-shadow: 0 4px 12px var(--card-shadow);
+			}
+
+			.image-wrapper img:hover {
+				transform: scale(1.05);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+			}
+
+			.content {
+				padding: var(--spacing-medium) 20px;
+			}
+
+			.title {
+				font-size: 1.1rem;
+				margin-bottom: var(--spacing-medium);
+				font-weight: 600;
+				color: #222;
+			}
+
+			.usp-list {
+				list-style: none;
+				padding: 0;
+				margin: 0 0 var(--spacing-medium) 0;
+				line-height: 1.6;
+				font-size: 13px;
+			}
+
+			.usp-list li {
+				position: relative;
+				padding-left: 20px;
+				margin-bottom: 6px;
+				color: #555;
+			}
+
+			.usp-list li::before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #28a745;
+				font-weight: bold;
+			}
+
+			.actions {
+				display: flex;
+				gap: var(--spacing-medium);
+				justify-content: center;
+				margin-bottom: 1rem;
+			}
+
+			.actions .icon-link,
+			.actions .icon-play {
+				font-size: 1.2rem;
+				color: #666;
+				transition: var(--transition-smooth);
+				padding: 6px;
+				border-radius: 6px;
+			}
+
+			.actions .icon-link:hover,
+			.actions .icon-play:hover {
+				color: #28a745;
+				background: rgba(40, 167, 69, 0.1);
+			}
+
+			/* ===== SPECIAL PRODUCT CARD LAYOUT ===== */
+			.image-wrapper {
+				position: relative;
+				height: auto;
+				padding: 20px;
+				background: #f8f9fa;
+				border-radius: var(--border-radius);
+				margin: var(--spacing-medium) var(--spacing-medium) 0px
+					var(--spacing-medium);
+				margin-bottom: 0px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				gap: 10px;
+			}
+
+			.image-wrapper img {
+				width: calc(50% - 5px);
+				height: auto;
+				object-fit: contain;
+				border-radius: var(--spacing-small);
+				transition: transform 0.3s ease;
+				cursor: pointer;
+				box-shadow: 0 4px 12px var(--card-shadow);
+			}
+
+			.image-wrapper img:hover {
+				transform: scale(1.05);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+			}
+
+			.content {
+				padding: var(--spacing-medium) 20px;
+			}
+
+			.title {
+				font-size: 1.1rem;
+				margin-bottom: var(--spacing-medium);
+				font-weight: 600;
+				color: #222;
+			}
+
+			.usp-list {
+				list-style: none;
+				padding: 0;
+				margin: 0 0 var(--spacing-medium) 0;
+				line-height: 1.6;
+				font-size: 13px;
+			}
+
+			.usp-list li {
+				position: relative;
+				padding-left: 20px;
+				margin-bottom: 6px;
+				color: #555;
+			}
+
+			.usp-list li::before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #28a745;
+				font-weight: bold;
+			}
+
+			.actions {
+				display: flex;
+				gap: var(--spacing-medium);
+				justify-content: center;
+				margin-bottom: 1rem;
+			}
+
+			.actions .icon-link,
+			.actions .icon-play {
+				font-size: 1.2rem;
+				color: #666;
+				transition: var(--transition-smooth);
+				padding: 6px;
+				border-radius: 6px;
+			}
+
+			.actions .icon-link:hover,
+			.actions .icon-play:hover {
+				color: #28a745;
+				background: rgba(40, 167, 69, 0.1);
+			}
+
+			/* ===== LIGHTBOX STYLES ===== */
+			.lightbox-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.85);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 9999;
+				opacity: 0;
+				visibility: hidden;
+				transition: var(--transition-smooth);
+			}
+
+			.lightbox-overlay.active {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			.lightbox-content {
+				position: relative;
+				max-width: 90%;
+				max-height: 90%;
+				transform: scale(0.9);
+				transition: transform 0.3s ease;
+			}
+
+			.lightbox-overlay.active .lightbox-content {
+				transform: scale(1);
+			}
+
+			.lightbox-image {
+				max-width: 100%;
+				max-height: 80vh;
+				border-radius: var(--spacing-small);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+				object-fit: contain;
+				background: transparent;
+				height: 80vh;
+			}
+
+			.lightbox-close {
+				position: absolute;
+				top: -40px;
+				right: -40px;
+				width: 40px;
+				height: 40px;
+				background-color: white;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+				transition: all 0.2s ease;
+				border: none;
+				outline: none;
+			}
+
+			.lightbox-close:hover {
+				background-color: #f8f9fa;
+				transform: rotate(90deg);
+			}
+
+			.lightbox-close::before,
+			.lightbox-close::after {
+				content: "";
+				position: absolute;
+				width: 20px;
+				height: 2px;
+				background-color: #333;
+			}
+
+			.lightbox-close::before {
+				transform: rotate(45deg);
+			}
+
+			.lightbox-close::after {
+				transform: rotate(-45deg);
+			}
+
+			body.lightbox-open {
+				overflow: hidden;
+			}
+
+			/* Pagination and Navigation Styles */
+			.swiper-pagination {
+				bottom: 2rem !important;
+			}
+
+			.swiper-pagination-bullet {
+				width: 12px;
+				height: 12px;
+				background: rgba(102, 126, 234, 0.3);
+				opacity: 1;
+				margin: 0 8px;
+				transition: all 0.3s ease;
+			}
+
+			.swiper-pagination-bullet-active {
+				background: #667eea;
+				transform: scale(1.2);
+			}
+
+			.swiper-button-next,
+			.swiper-button-prev {
+				color: #667eea;
+				opacity: 0.7;
+				transition: opacity 0.3s ease;
+			}
+
+			.swiper-button-next:hover,
+			.swiper-button-prev:hover {
+				opacity: 1;
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.swiper-slide {
+					padding: 2rem;
+				}
+
+				.logo {
+					width: 150px;
+					height: 150px;
+				}
+
+				.logo-text {
+					font-size: 2.25rem;
+				}
+
+				.company-tagline {
+					font-size: 1rem;
+				}
+			}
+
+			.gallery-item {
+				position: relative;
+				max-width: 300px;
+				max-height: 150px;
+				width: 100%;
+				border-radius: 8px;
+				overflow: hidden;
+				cursor: pointer;
+				box-shadow: 0 2px 16px 3px rgba(0, 0, 0, 1);
+			}
+
+			.logotype-item {
+				position: relative;
+				max-width: 300px;
+				max-height: 150px;
+				width: 100%;
+				border-radius: 8px;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			.logotype-item img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				filter: blur(0px);
+				transition: all 0.3s ease-out;
+				border-radius: 8px;
+				image-rendering: auto;
+			}
+
+			.example-content {
+				font-size: 1.5rem;
+			}
+
+			.example-content ul {
+				list-style: none;
+				font-size: 2rem;
+			}
+
+			.example-content .founder-title {
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+
+			.gallery-item img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				filter: blur(0px);
+				transition: all 0.3s ease-out;
+				border-radius: 8px;
+				image-rendering: auto;
+			}
+
+			.gallery-item:hover {
+				transform: scale(1.05);
+				box-shadow: 0 4px 24px 3px rgba(0, 0, 0, 1);
+			}
+
+			.gallery-item.zoom-icon {
+				opacity: 1;
+			}
+
+			.gallery-item:hover img {
+				filter: blur(0px);
+			}
+
+			.partners-slide .gallery-item {
+				max-height: unset !important;
+				max-width: 100% !important;
+			}
+
+			.partners-slide .gallery-item img {
+				aspect-ratio: 16 / 9;
+			}
+
+			.zoom-icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 2rem;
+				color: white;
+				text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+				pointer-events: none;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.gallery-item:hover .zoom-icon {
+				opacity: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!-- Logo Slide -->
+				<div class="swiper-slide white-overlay logo-slide">
+					<div class="logo-container">
+						<div class="logo">
+							<img
+								alt="Company Logo"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/681f83f8a751074e790c4215.svg"
+							/>
+						</div>
+
+						<p class="company-tagline" style="text-align: center">
+							Framtidens resurs
+						</p>
+					</div>
+				</div>
+				<!-- Founder Slide -->
+				<div class="swiper-slide white-overlay founder-slide">
+					<div
+						class="founder-content"
+						style="position: absolute; left: 10%; top: 35%"
+					>
+						<h2 class="founder-title">Varför CirculAir?</h2>
+						<div class="founder-text">
+							<p
+								style="
+									font-size: 1.2rem;
+									font-weight: 500;
+									font-style: italic;
+									margin-top: 3rem;
+								"
+							>
+								"Min passion är att använda resurser på rätt sätt och skapa
+								värde – både i nya och befintliga byggnader – samt att skapa
+								flöde i allt från arbetsprocesser till ventilationssystem."
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- ReUse Slide -->
+				<div class="swiper-slide white-washed reuse-slide">
+					<div class="slide-content">
+						<h2 class="slide-title" style="color: #323232">
+							Konsten att bevara byggnadens själ – även när luften byts ut.
+						</h2>
+					</div>
+				</div>
+				<!-- Challenge Slide -->
+				<div class="swiper-slide white-overlay challenge-slide">
+					<div class="challenge-content">
+						<h2 class="challenge-title">
+							Måste god ventilation alltid synas - och ta plats?
+						</h2>
+					</div>
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683ecc92dc4744b88fb6127a.jpeg"
+								style="position: relative"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683db8232fcd900f9827e24d.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6841abbbebaf9d66a4893c33.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- Hard places to install Slide -->
+				<div class="swiper-slide white-overlay wierd-places-slide">
+					<div class="challenge-content">
+						<h2 class="challenge-title">Att projektera äldre byggnader</h2>
+						<p class="challenge-text">
+							Bevara det arnrika - förbättra inomhusklimatet
+						</p>
+					</div>
+
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684412ddf2331f7cb8616964.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684412dd17e1e624bcb1989f.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Utmaning 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684412ddf2331f5929616963.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- Solution Slide -->
+				<div class="swiper-slide white-overlay-right solution-slide">
+					<div class="solution-content">
+						<h2 class="solution-title">
+							Så kan vi skapa riktigt bra luft som också ser bra ut
+						</h2>
+					</div>
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Lösning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6842f0d370766a50a4ac1913.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6842f0d34e03ed6658d1bcf0.jpeg"
+								style="position: relative"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684415e7f2331f09de616b71.jpeg"
+								style="position: relative"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- Technodromen Slide -->
+				<div class="swiper-slide white-overlay technodromen-slide">
+					<div class="solution-content">
+						<h2 class="solution-title">Teknodromen</h2>
+					</div>
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Lösning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684417bff2331f8e86616c94.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6842f0ebc5ae2d57a9d6966e.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684417bff2331fb66f616c95.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- Showcase Slide -->
+				<div class="swiper-slide white-overlay showcase-slide">
+					<div class="solution-content">
+						<h2 class="solution-title">Vi på hörnet</h2>
+					</div>
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Lösning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68441906081d95386f5229fe.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68441906f2331f0228616d87.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 4"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/68441906374ef23fffed8321.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- fasadapparat Slide -->
+				<div class="swiper-slide white-washed fasadapparat-slide">
+					<div class="slide-content">
+						<h2 class="slide-title" style="color: #323232">
+							Nyfiken på vad en fasadapparat kan göra för dig?
+						</h2>
+						<p class="slide-tagline"></p>
+					</div>
+				</div>
+				<!-- price-video Slide -->
+				<div class="swiper-slide white-washed price-video-slide">
+					<div class="slide-content">
+						<h2 class="slide-title" style="color: #323232">
+							Hur kan vi spara energi?
+						</h2>
+						<div
+							class="video-container"
+							style="
+								position: relative;
+								padding-bottom: 55vh;
+								height: 0;
+								overflow: hidden;
+								box-shadow: 0 2px 16px 3px rgba(0, 0, 0, 1);
+								border-radius: 8px;
+							"
+						>
+							<video
+								controls
+								style="height: 55vh; border-radius: 8px"
+								poster="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684703e7fa2152123527b033.png"
+							>
+								<source
+									src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847034a8e36210052023c30.mp4"
+									type="video/mp4"
+								/>
+								Din webbläsare stödjer inte videouppspelning.
+							</video>
+						</div>
+					</div>
+				</div>
+				<!-- example Slide -->
+				<div class="swiper-slide white-washed example-slide">
+					<div class="slide-content">
+						<div class="example-content">
+							<h2 class="slide-title" style="color: #323232">
+								Fasadapparater - Ett klokt tekniskt val
+							</h2>
+							<div class="founder-text">
+								<p style="text-align: center; font-size: 1.5rem">
+									Effektiv projektering | Låg livscykelkostnad <br />
+									Smidig installation | God driftsekonomi
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="founder-content"></div>
+					<div class="founder-gallery">
+						<div class="gallery-item">
+							<img
+								alt="Lösning 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6844220e081d958f16523043.png"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Lösning 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/684423888304466947f7c961.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<!-- Slide about what we do with the old -->
+				<!-- We hire collaborate with other firms that are speciallized in återbruk -->
+				<div class="swiper-slide white-washed what-we-do-slide">
+					<div class="slide-content">
+						<div class="example-content">
+							<h2 class="slide-title" style="color: #323232">
+								Vad gör vi med allt det gamla?
+							</h2>
+							<div class="founder-text">
+								<p style="text-align: center; font-size: 1.5rem">
+									Vi erbjuder en helhetslösning för VVS återbruk, vilket
+									resulterar i minskat avfall, sänkta kostnader och klimat
+									nytta.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="swiper-slide partners-slide">
+					<div class="founder-gallery" style="bottom: unset; top: 5%">
+						<!-- Happy customers -->
+						<div class="gallery-item">
+							<img
+								alt="Partner 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847d228c3029a4f696bd270.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Partner 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847d228c7521a5fb93eb8af.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Partner 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847d22823c083a3bf45efcd.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="gallery-item">
+							<img
+								alt="Partner 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/6847d228222bb7af5f337e3e.jpeg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+
+					<div class="slide-content">
+						<h2
+							class="slide-title"
+							style="
+								color: #323232;
+								top: 45%;
+								position: relative;
+								font-size: 3.5rem;
+							"
+						>
+							Tillsammans skapar vi framtidens inomhusklimat
+						</h2>
+					</div>
+					<div class="founder-gallery">
+						<!-- Our partners Logotypes -->
+						<div class="logotype-item">
+							<img
+								alt="Partner 1"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/682c7347c90e6b73797979ec.png"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="logotype-item">
+							<img
+								alt="Partner 2"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://www.emtf.se/wp-content/themes/emtf/images/emtf-logo-dark-payoff.svg"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+						<div class="logotype-item">
+							<img
+								alt="Partner 3"
+								class="lightbox-trigger lightbox-trigger"
+								src="https://static.wixstatic.com/media/a7a589_4f02d28dd363444eb46561f55441ee57~mv2.png/v1/fill/w_185,h_53,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a7a589_4f02d28dd363444eb46561f55441ee57~mv2.png"
+							/>
+							<div class="zoom-icon">Förstora</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide product-slide">
+					<!-- GENERATE DYNAMIC PRODUCTS -->
+
+					<div class="vertical-swiper verticalSwiper3">
+						<div class="swiper-wrapper">
+							<!-- Dynamic supplier slides will be generated here by JavaScript -->
+						</div>
+						<!-- <div class="swiper-pagination"></div> -->
+					</div>
+				</div>
+				<!-- Final Slide -->
+				<div
+					class="swiper-slide final-slide"
+					style="
+						background: white;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						padding: 6rem 2rem;
+					"
+				>
+					<div
+						class="slide-content"
+						style="max-width: 1000px; text-align: center; color: #1f1f1f"
+					>
+						<h2
+							style="
+								font-size: 3rem;
+								font-weight: 800;
+								line-height: 1.2;
+								margin-bottom: 2.5rem;
+							"
+						>
+							Ni har valt en tekniskt smart<br />och arkitektoniskt hållbar
+							lösning.
+						</h2>
+
+						<h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 2rem">
+							Nu finns möjligheten att driva projektet med:
+						</h3>
+
+						<ul
+							style="
+								list-style: none;
+								font-size: 1.75rem;
+								font-weight: 500;
+								line-height: 2.2;
+								margin-bottom: 3rem;
+							"
+						>
+							<li>→ Färre konsulttimmar</li>
+							<li>→ Bättre återbruk</li>
+							<li>→ Högre servicegrad</li>
+						</ul>
+
+						<p
+							style="
+								font-size: 1.5rem;
+								font-weight: 600;
+								max-width: 800px;
+								margin: 0 auto;
+							"
+						>
+							Jag och <strong>CirculAir</strong> är redo att ta det
+							helhetsansvar som krävs för att göra projektet både smidigare och
+							mer lönsamt.
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- Navigation buttons -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+		<!-- Swiper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+		<!-- Swiper Initialization -->
+		<script>
+			const swiper = new Swiper(".swiper-container", {
+				direction: "horizontal",
+				loop: !1,
+				speed: 800,
+				effect: "slide",
+				pagination: { el: ".swiper-pagination", clickable: !0 },
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+				keyboard: { enabled: !0 },
+				mousewheel: { enabled: !0 },
+			});
+			document.addEventListener("DOMContentLoaded", function () {
+				new Swiper(".partner-swiper", {
+					slidesPerView: 3,
+					spaceBetween: 30,
+					loop: !0,
+					grabCursor: !0,
+					navigation: {
+						nextEl: ".swiper-button-next",
+						prevEl: ".swiper-button-prev",
+					},
+					breakpoints: {
+						0: { slidesPerView: 1 },
+						640: { slidesPerView: 2 },
+						1024: { slidesPerView: 3 },
+					},
+				});
+			});
+		</script>
+		<!-- Lightbox Script -->
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				function setupLightbox() {
+					if (!document.getElementById("product-lightbox")) {
+						const lightboxHtml = `
+                            <div id="product-lightbox" class="lightbox-overlay">
+                                <div class="lightbox-content">
+                                    <img src="" alt="" class="lightbox-image" id="lightbox-img">
+                                    <button class="lightbox-close" id="lightbox-close">×</button>
+                                </div>
+                            </div>
+                            `;
+						document.body.insertAdjacentHTML("beforeend", lightboxHtml);
+					}
+					document.addEventListener("click", (e) => {
+						if (e.target.classList.contains("lightbox-trigger")) {
+							e.preventDefault();
+							const imgSrc = e.target.src;
+							const imgAlt = e.target.alt || "";
+							const lightbox = document.getElementById("product-lightbox");
+							const lightboxImg = document.getElementById("lightbox-img");
+							lightboxImg.src = imgSrc;
+							lightboxImg.alt = imgAlt;
+							lightbox.classList.add("active");
+							document.body.classList.add("lightbox-open");
+						}
+						if (
+							e.target.closest(".lightbox-close") ||
+							(e.target.classList.contains("lightbox-overlay") &&
+								e.target.id === "product-lightbox")
+						) {
+							document
+								.getElementById("product-lightbox")
+								.classList.remove("active");
+							document.body.classList.remove("lightbox-open");
+						}
+					});
+					document.addEventListener("keydown", (e) => {
+						if (
+							e.key === "Escape" &&
+							document
+								.getElementById("product-lightbox")
+								.classList.contains("active")
+						) {
+							document
+								.getElementById("product-lightbox")
+								.classList.remove("active");
+							document.body.classList.remove("lightbox-open");
+						}
+					});
+				}
+				setupLightbox();
+			});
+		</script>
+		<!-- Video Volume Control -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const video = document.querySelector("video");
+				if (video) video.volume = 0.5;
+			});
+		</script>
+		<script>
+			const productDatabase = {
+				suppliers: {
+					"price-industries": {
+						name: "Price Industries",
+						logo: "https://www.priceindustries.com/content/themes/price/images/logo.svg",
+						backgroundImage:
+							"https://storage.googleapis.com/msgsndr/gUgbLxsYoQKwkyWjMlOc/media/683087c7dc1ab51d2a8a561a.webp",
+						categories: {
+							underfloor: {
+								title: "Underfloor Ventilation",
+								products: [
+									{
+										id: "mfd-dp",
+										title: "MFD-DP - Modular Floor Diffuser",
+										subtitle: "Displacement Pattern",
+										url: "https://www.priceindustries.com/underfloor/products/mfd-dp-modular-floor-diffuser-displacement-pattern",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/rfddarfhd-round-floor-displacement-diffuser.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/rfddarfhd-round-floor-displacement-diffuser-5.jpg",
+										],
+										features: [
+											"Ideal för låg induktionsgolvnivå",
+											"Horisontellt luftflödesmönster",
+											"Låg turbulens för komfort",
+											"Enkel drop-in installation",
+											"CE-certifierad",
+										],
+										description:
+											"Perfekt för applikationer där låg induktion och horisontellt luftflöde krävs. Designad för att minimera drag och maximera komfort.",
+									},
+									{
+										id: "mfd-tp",
+										title: "MFD-TP - Modular Floor Diffuser",
+										subtitle: "Twist Pattern",
+										url: "https://www.priceindustries.com/underfloor/products/mfd-tp-modular-floor-diffuser-twist-pattern",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/rftdarftd-round-floor-turbulent-flow-diffusers.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/rftdarftd-round-floor-turbulent-flow-diffusers-5.jpg",
+										],
+										features: [
+											"Turbulent flödesdesign för optimal blandning",
+											"Twist-mönster för förbättrad luftdistribution",
+											"Idealisk för höga luftflöden",
+											"Robust konstruktion för kommersiell användning",
+											"Enkel installation och underhåll",
+										],
+										description:
+											"MFD-TP använder ett unikt twist-mönster för att skapa turbulent flöde som optimerar luftblandning och komfort i stora utrymmen.",
+									},
+									{
+										id: "linear-natural-convection",
+										title: "Linear Natural Convection Terminal",
+										url: "https://www.priceindustries.com/underfloor/products/linear-natural-convection-terminal",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/linear-natural-convection-terminal-6.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/lfg-linear-floor-grille.jpg",
+										],
+										features: [
+											"Naturlig konvektion utan fläktar",
+											"Energieffektiv drift",
+											"Linjär design för diskret installation",
+											"Låg ljudnivå",
+											"Miljövänlig lösning",
+										],
+										description:
+											"En innovativ terminal som använder naturlig konvektion för energieffektiv luftcirkulation utan behov av mekaniska fläktar.",
+									},
+									{
+										id: "variable-volume-round-basket",
+										title: "Variable Volume Round Floor Basket",
+										url: "https://www.priceindustries.com/underfloor/products/variable-volume-round-floor-basket",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/dbv-variable-volume-round-floor-basket-3.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/dbv-variable-volume-round-floor-basket-2.jpg",
+										],
+										features: [
+											"Variabel volymkontroll",
+											"Rund design för flexibel placering",
+											"Justerbar luftflödeskapacitet",
+											"Robust konstruktion",
+											"Lämplig för olika applikationer",
+										],
+										description:
+											"DBV erbjuder variabel volymkontroll med sin runda design, perfekt för applikationer som kräver flexibel luftflödesreglering.",
+									},
+									{
+										id: "rpn-pressure-node",
+										title: "RPN - Relative Pressure Node",
+										url: "https://www.priceindustries.com/underfloor/products/rpn-relative-pressure-node",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/relative-pressure-node-2.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/relative-pressure-node-3.jpg",
+										],
+										features: [
+											"Precis tryckmätning och kontroll",
+											"Kompakt design för enkel integration",
+											"Hög noggrannhet och tillförlitlighet",
+											"Lämplig för systembalansering",
+											"Professionell kvalitet",
+										],
+										description:
+											"RPN ger precis tryckmätning och kontroll för optimal systembalansering och prestanda i underfloor ventilationssystem.",
+									},
+								],
+							},
+							diffusers: {
+								title: "Diffusers",
+								products: [
+									{
+										id: "spd",
+										title: "Square Plaque Diffuser",
+										url: "https://www.priceindustries.com/diffusers/products/spd-square-plaque-diffuser",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/spd--spd-as--aspd-square-plaque-diffusers-2.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/square-plaque-diffuser.jpg",
+										],
+										features: [
+											"Elegant fyrkantig design",
+											"Jämn luftdistribution",
+											"Flera monteringsalternativ",
+											"Lämplig för olika takhöjder",
+											"Låg ljudnivå",
+										],
+										description:
+											"SPD är en elegant fyrkantig diffusor som ger jämn luftdistribution med minimal turbulens och låg ljudnivå.",
+									},
+									{
+										id: "scd",
+										title: "Square Cone Diffuser",
+										url: "https://www.priceindustries.com/diffusers/products/scd-square-cone-diffuser",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/scd--scd-as--ascd--square-cone-diffusers.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/square-cone-diffuser.jpg",
+										],
+										features: [
+											"Justerbar luftflödesriktning",
+											"Fyrkantig design med konformad mitt",
+											"Hög induktionsförmåga",
+											"Passar i standardtak",
+											"Robust konstruktion",
+										],
+										description:
+											"SCD erbjuder justerbar luftflödesriktning med sin unika konformade design, perfekt för applikationer som kräver flexibel luftdistribution.",
+									},
+									{
+										id: "smd",
+										title: "Modular Louvered Diffuser",
+										url: "https://www.priceindustries.com/diffusers/products/smd-modular-louvered-diffuser",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/modular-louvered-face-diffuser.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/modular-louvered-face-diffuser-4.jpg",
+										],
+										features: [
+											"Modulär design för flexibilitet",
+											"Justerbara lameller",
+											"Hög kapacitet",
+											"Enkel installation",
+											"Lämplig för kommersiella miljöer",
+										],
+										description:
+											"SMD kombinerar flexibilitet och prestanda med sin modulära design och justerbara lameller för optimal luftdistribution.",
+									},
+									{
+										id: "cf",
+										title: "Custom Flow Architectural Slot Diffuser",
+										url: "https://www.priceindustries.com/diffusers/products/cf-custom-flow-architectural-slot-diffuser",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/custom-flow-architectural-slot-diffuser-22.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/custom-flow-architectural-slot-diffuser-23.jpg",
+										],
+										features: [
+											"Elegant arkitektonisk design",
+											"Anpassningsbar luftflödesriktning",
+											"Slimmad profil",
+											"Idealisk för designfokuserade projekt",
+											"Hög prestanda",
+										],
+										description:
+											"CF erbjuder en elegant arkitektonisk lösning med sin slimmade slitsdesign, perfekt för projekt där estetik är lika viktigt som funktion.",
+									},
+									{
+										id: "rcd",
+										title: "Round Cone Diffuser",
+										url: "https://www.priceindustries.com/diffusers/products/rcd-round-cone-diffuser",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/rcd--arcd--rcda-round-cone-diffusers.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/rpd-round-plaque-diffusers.jpg",
+										],
+										features: [
+											"Rund design med konformad mitt",
+											"360° luftdistribution",
+											"Justerbar kastlängd",
+											"Lämplig för olika takhöjder",
+											"Estetiskt tilltalande",
+										],
+										description:
+											"RCD ger en jämn 360° luftdistribution med sin runda design, idealisk för öppna utrymmen där jämn luftfördelning är viktigt.",
+									},
+									{
+										id: "amcd",
+										title: "Adjustable Modular Core Directional",
+										url: "https://www.priceindustries.com/diffusers/products/amcd-adjustable-modular-core-directional",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/modular-core-adjustable---directional-diffuser.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/modular-core-adjustable---directional-diffuser-2.jpg",
+										],
+										features: [
+											"Fullt justerbar luftriktning",
+											"Modulär kärndesign",
+											"Hög flexibilitet",
+											"Enkel att anpassa på plats",
+											"Robust konstruktion",
+										],
+										description:
+											"AMCD erbjuder maximal flexibilitet med sin justerbara modulära kärna, vilket gör den idealisk för miljöer där luftflödesriktningen behöver anpassas.",
+									},
+									{
+										id: "radial-twist",
+										title: "Radial Twist Diffusers",
+										url: "https://www.priceindustries.com/diffusers/products/radial-twist-diffusers",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/rtd-radial-twist-diffusers.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/rvd-radial-vane-diffusers.jpg",
+										],
+										features: [
+											"Unik vriddesign för optimal luftblandning",
+											"Hög induktionsförmåga",
+											"Lämplig för kylapplikationer",
+											"Modern estetik",
+											"Effektiv luftdistribution",
+										],
+										description:
+											"Radial Twist diffusorer använder en innovativ vriddesign för att optimera luftblandning och induktion, vilket ger överlägsen komfort och effektivitet.",
+									},
+								],
+							},
+							chilledBeams: {
+								title: "Chilled Beams",
+								products: [
+									{
+										id: "acbr-recessed",
+										title: "ACBR – Aktiv Kylbalk, Infälld",
+										subtitle:
+											"Flexibel för horisontell eller vertikal installation",
+										url: "https://www.priceindustries.com/beams/products/active-chilled-beam-recessed",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-recessed.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-recessed-3.jpg",
+										],
+										features: [
+											"Lågprofildesign för utrymmen med låg takhöjd",
+											"Flexibel installation: horisontell eller vertikal",
+											"Flera galleralternativ för tilluft och frånluft",
+											"Fältvändbara batterikonfigurationer",
+										],
+										description:
+											"Den infällda aktiva kylbalken ACBR erbjuder flexibel installation för både horisontella och vertikala applikationer. Med sin smala profil är den idealisk för utrymmen med låg takhöjd eller där diskret installation önskas. Perfekt för kontor, hotellrum och renoveringsprojekt där energieffektivitet och komfort är prioriterade.",
+									},
+									{
+										id: "acbc-floor",
+										title: "ACBC – Aktiv Kylbalk, Golvmonterad",
+										subtitle: "Exponerad enhet för hög komfort",
+										url: "https://www.priceindustries.com/beams/products/acbc-floor-mounted-active-beam",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/floor-mounted-active-beam.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/active-chilled-beam-cabinet--2.jpg",
+										],
+										features: [
+											"2- eller 4-rörs batterikonfiguration",
+											"Tyst drift med låg ljudnivå",
+											"Robust konstruktion med kraftig frontpanel",
+											"Möjlighet till seriekoppling för enhetlig design",
+										],
+										description:
+											"Den golvmonterade aktiva kylbalken ACBC är designad för att leverera hög komfort i utrymmen med höga krav på estetik och funktion. Genom att inducera rumsluft genom en värmeväxlare och blanda den med primärluft, säkerställs jämn temperaturfördelning. Idealisk för kontor, skolor, hotell och lobbyområden.",
+									},
+									{
+										id: "riu-retrofit",
+										title: "RIU – Retrofit Induktionsenhet",
+										subtitle: "Modernisering av befintliga system",
+										url: "https://www.priceindustries.com/beams/products/retrofit-induction-unit",
+										images: [
+											"https://www.priceindustries.com/content/uploads/images/product/retrofit-induction-unit.jpg",
+											"https://www.priceindustries.com/content/uploads/images/product/retrofit-induction-unit-6.jpg",
+										],
+										features: [
+											"Anpassad för uppgradering av äldre induktionssystem",
+											"Förbättrad energieffektivitet och komfort",
+											"Bevarar infrastruktur för kostnadseffektivitet",
+											"Kompatibel med moderna styrsystem",
+										],
+										description:
+											"RIU är en retrofit-lösning som möjliggör uppgradering av äldre induktionsenheter till moderna, energieffektiva system utan att behöva byta ut hela infrastrukturen. Genom att integrera ny teknik i befintliga installationer, förbättras både prestanda och komfort, samtidigt som kostnader och miljöpåverkan minimeras.",
+									},
+								],
+							},
+						},
+					},
+				},
+			};
+			class ProductDisplay {
+				constructor(database) {
+					this.database = database;
+					this.activeCategory = "all";
+					this.swipers = [];
+				}
+				init() {
+					this.generateSupplierSlides();
+					this.initializeSwipers();
+					this.setupCategoryFilters();
+				}
+				generateSupplierSlides() {
+					const verticalWrapper = document.querySelector(
+						".verticalSwiper3 .swiper-wrapper"
+					);
+					const existingSlides = Array.from(
+						verticalWrapper.querySelectorAll(".swiper-slide")
+					).slice(0, 2);
+					verticalWrapper.innerHTML = "";
+					existingSlides.forEach((slide) => {
+						verticalWrapper.appendChild(slide);
+					});
+					Object.entries(this.database.suppliers).forEach(
+						([supplierId, supplier]) => {
+							const supplierSlide = this.createSupplierSlide(
+								supplierId,
+								supplier
+							);
+							verticalWrapper.insertAdjacentHTML("beforeend", supplierSlide);
+						}
+					);
+					setTimeout(() => {
+						if (verticalSwiper3) {
+							verticalSwiper3.update();
+							verticalSwiper3.updateSize();
+							verticalSwiper3.updateSlides();
+							verticalSwiper3.pagination.update();
+							console.log("Supplier slides generated and swiper updated");
+						}
+					}, 100);
+					setTimeout(() => {
+						if (verticalSwiper3) {
+							verticalSwiper3.update();
+							verticalSwiper3.pagination.render();
+							verticalSwiper3.pagination.update();
+							console.log("Product vertical swiper updated");
+						}
+					}, 200);
+				}
+				createSupplierSlide(supplierId, supplier) {
+					const allProducts = [];
+					Object.entries(supplier.categories).forEach(
+						([categoryKey, category]) => {
+							category.products.forEach((product) => {
+								allProducts.push({ ...product, categoryKey: categoryKey });
+							});
+						}
+					);
+					return `
+                    <div class="swiper-slide product-slide">
+                        <div class="product-slide-top-image">
+                            <img src="${supplier.backgroundImage}" alt="${
+						supplier.name
+					}" class="product-slide-top-image">
+                            <h1 class="product-slide-title">${
+															supplier.name
+														}</h1>
+                        </div>
+                        
+                        <!-- Category Filter Buttons -->
+                        <div class="category-filter" data-supplier="${supplierId}">
+                            <button class="category-btn active" data-category="all">Alla</button>
+                            <button class="category-btn" data-category="underfloor">Underfloor</button>
+                            <button class="category-btn" data-category="diffusers">Diffusers</button>
+                            <button class="category-btn" data-category="chilledBeams">Chilled Beams</button>
+                        </div>
+                        
+                        <div class="product-section-card">
+                            <div class="swiper horizontal-product-swiper" data-supplier="${supplierId}">
+                                <div class="swiper-wrapper">
+                                    ${this.generateProductCards(allProducts)}
+                                </div>
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+				}
+				generateProductCards(products) {
+					return products
+						.map((product) => {
+							const imagesHtml = product.images
+								.slice(0, 2)
+								.map((img) => `<img src="${img}" alt="${product.title}" />`)
+								.join("");
+							const featuresHtml = product.features
+								.slice(0, 4)
+								.map((feature) => `<li>${feature}</li>`)
+								.join("");
+							const categoryKey = product.categoryKey || "diffusers";
+							return `
+                        <div class="swiper-slide" data-category="${categoryKey}">
+                            <div class="product-card">
+                                <div class="image-wrapper">
+                                    ${imagesHtml}
+                                </div>
+                                <div class="content">
+                                    <h2 class="title">${product.title}</h2>
+                                    <p class="description">${product.description}</p>
+                                    <ul class="usp-list">
+                                        ${featuresHtml}
+                                    </ul>
+                                </div>
+                                <div class="actions">
+                                        <a href="${product.url}" target="_blank" class="icon-link" title="Product Page">
+                                            <i class="fas fa-link"></i>
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                    `;
+						})
+						.join("");
+				}
+				setupCategoryFilters() {
+					document.addEventListener("click", (e) => {
+						if (!e.target.classList.contains("category-btn")) return;
+						const supplierId =
+							e.target.closest(".category-filter").dataset.supplier;
+						const category = e.target.dataset.category;
+						const buttons = e.target
+							.closest(".category-filter")
+							.querySelectorAll(".category-btn");
+						buttons.forEach((btn) => btn.classList.remove("active"));
+						e.target.classList.add("active");
+						this.filterProducts(supplierId, category);
+					});
+				}
+				filterProducts(supplierId, category) {
+					const swiperElement = document.querySelector(
+						`.horizontal-product-swiper[data-supplier="${supplierId}"]`
+					);
+					if (!swiperElement) return;
+					const slides = swiperElement.querySelectorAll(".swiper-slide");
+					slides.forEach((slide) => {
+						const slideCategory = slide.dataset.category;
+						const shouldShow = category === "all" || slideCategory === category;
+						if (shouldShow) {
+							slide.style.display = "block";
+							slide.style.visibility = "visible";
+							slide.style.opacity = "1";
+						} else {
+							slide.style.display = "none";
+							slide.style.visibility = "hidden";
+							slide.style.opacity = "0";
+						}
+					});
+					const swiper = swiperElement.swiper;
+					if (swiper) {
+						setTimeout(() => {
+							swiper.update();
+							swiper.slideTo(0, 0);
+						}, 100);
+					}
+				}
+				initializeSwipers() {
+					this.swipers.forEach((swiper) => {
+						if (swiper && typeof swiper.destroy === "function") {
+							swiper.destroy();
+						}
+					});
+					this.swipers = [];
+					document
+						.querySelectorAll(".horizontal-product-swiper")
+						.forEach((element) => {
+							const swiper = new Swiper(element, {
+								slidesPerView: "auto",
+								spaceBetween: 30,
+								grabCursor: !0,
+								loop: !1,
+								freeMode: !0,
+								scrollbar: {
+									el: element.querySelector(".swiper-scrollbar"),
+									draggable: !0,
+								},
+								breakpointsBased: "container",
+								breakpoints: {
+									320: { slidesPerView: 1 },
+									640: { slidesPerView: 2 },
+									768: { slidesPerView: 3 },
+									1024: { slidesPerView: 4 },
+								},
+								nested: !0,
+								on: {
+									touchStart: function () {
+										verticalSwiper2.disable();
+										verticalSwiper3.disable();
+										horizontalSectionSwiper.disable();
+										this.params.touchEventsTarget = "wrapper";
+									},
+									touchEnd: function () {
+										verticalSwiper2.enable();
+										verticalSwiper3.enable();
+										horizontalSectionSwiper.enable();
+										this.params.touchEventsTarget = "container";
+									},
+									sliderMove: function () {
+										verticalSwiper2.disable();
+										verticalSwiper3.disable();
+										horizontalSectionSwiper.disable();
+									},
+								},
+							});
+							this.swipers.push(swiper);
+							element.swiper = swiper;
+						});
+				}
+			}
+			const verticalSwiper2 = new Swiper(".verticalSwiper2", {
+				direction: "vertical",
+				slidesPerView: 1,
+				spaceBetween: 0,
+				mousewheel: !0,
+				nested: !0,
+				pagination: {
+					el: ".verticalSwiper2 .swiper-pagination",
+					clickable: !0,
+				},
+				keyboard: { enabled: !0, onlyInViewport: !0 },
+			});
+			const verticalSwiper3 = new Swiper(".verticalSwiper3", {
+				direction: "vertical",
+				slidesPerView: 1,
+				spaceBetween: 0,
+				mousewheel: !0,
+				nested: !0,
+				pagination: {
+					el: ".verticalSwiper3 .swiper-pagination",
+					clickable: !0,
+				},
+				keyboard: { enabled: !0, onlyInViewport: !0 },
+			});
+			const horizontalSectionSwiper = new Swiper(".product-category-swiper", {
+				slidesPerView: 1,
+				direction: "horizontal",
+				spaceBetween: 30,
+				loop: !1,
+				navigation: !0,
+				nested: !0,
+			});
+			document.addEventListener("DOMContentLoaded", function () {
+				document
+					.querySelectorAll(".horizontal-product-swiper")
+					.forEach((swiper) => {
+						swiper.addEventListener("mouseenter", function () {
+							verticalSwiper2.disable();
+							verticalSwiper3.disable();
+							horizontalSectionSwiper.disable();
+						});
+						swiper.addEventListener("mouseleave", function () {
+							verticalSwiper2.enable();
+							verticalSwiper3.enable();
+							horizontalSectionSwiper.enable();
+						});
+					});
+			});
+			document.addEventListener("DOMContentLoaded", function () {
+				const productDisplay = new ProductDisplay(productDatabase);
+				productDisplay.init();
+				function fixSwiperNavigation() {
+					verticalSwiper2.update();
+					verticalSwiper3.update();
+					verticalSwiper3.pagination.render();
+					verticalSwiper3.pagination.update();
+					setTimeout(() => {
+						verticalSwiper2.update();
+						verticalSwiper3.update();
+						verticalSwiper3.updateSize();
+						verticalSwiper3.updateSlides();
+						console.log("Navigation fixed: All swipers updated");
+					}, 500);
+				}
+				document.addEventListener("DOMContentLoaded", function () {
+					const productDisplay = new ProductDisplay(productDatabase);
+					productDisplay.init();
+					setTimeout(fixSwiperNavigation, 300);
+				});
+			});
+		</script>
+	</body>
+</html>
